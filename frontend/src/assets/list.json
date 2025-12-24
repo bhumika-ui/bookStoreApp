@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Comedy Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 20,
+    "category": "Entertainment",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Music Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 100,
+    "category": "Song",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Sports Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 50,
+    "category": "Sports",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Story Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 0,
+    "category": "Free",
+    "image": "/src/assets/card.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Food Book",
+    "title": "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+    "price": 80,
+    "category": "Recipe",
+    "image": "/src/assets/card.jpg"
+  }
+]
