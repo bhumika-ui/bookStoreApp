@@ -36,7 +36,7 @@ function Banner() {
               <input type="email" placeholder="mail@site.com" required />
             </label>
           </div>
-          <button className="btn mt-6 mb-4 btn-secondary">Secondary</button>
+          <button className="btn mt-6 mb-4 btn-secondary">Get Started</button>
         </div>
         <div className="w-full order-1 md:w-1/2">
         <img src={banner} alt="" className=""/>
