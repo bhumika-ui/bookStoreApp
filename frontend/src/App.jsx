@@ -5,6 +5,8 @@ import Courses from "./courses/Courses";
 import Signup from "./components/Signup";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "./context/AuthProvider";
+import Contacts from "./contact/Contacts";
+import Abouts from "./about/Abouts";
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -19,6 +21,8 @@ function App() {
           path="/course"
           element={authUser ? <Courses /> : <Navigate to="/signup" />}
         />
+        <Route path="/contact" element={<Contacts />} />
+        <Route path="/about" element={<Abouts />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
       <ToastContainer />

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./db.js";
 import bookRoute from "./route/bookroute.js";
 import userRoute from "./route/userroute.js";
+import contactRoute from "./route/contactroute.js"
 import cors from "cors";
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.get("/",(req,res) => {
 
 app.use("/book", bookRoute);
 app.use("/users", userRoute);
+app.use("/contact", contactRoute);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`);
