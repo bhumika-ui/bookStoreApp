@@ -3,7 +3,7 @@ import { data, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useAuth } from "../pages/context/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 
 function Login() {
   const { login } = useAuth();

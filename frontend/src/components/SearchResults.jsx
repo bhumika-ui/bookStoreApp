@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { useSearch } from "../pages/context/SearchContext";
+import { useSearch } from "../context/SearchContext";
 import Cards from "../common/Cards";
 
 function SearchResults() {
