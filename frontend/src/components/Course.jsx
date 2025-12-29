@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react"; 
-import Cards from "./Cards";
+import React, { useEffect, useState } from "react";
+import Cards from "../common/Cards";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Course() {
-
-  const[book, setBook] = useState([]);
+  const [book, setBook] = useState([]);
   useEffect(() => {
-    const getBook = async() => {
-      try{
-       const res = await axios.get("http://localhost:3000/book");
-       console.log(res.data)
-       setBook(res.data)
-      } catch(error) {
+    const getBook = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/book");
+        console.log(res.data);
+        setBook(res.data);
+      } catch (error) {
         console.log(error);
       }
-    }
+    };
     getBook();
-  }, []); 
+  }, []);
 
   return (
     <>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Cards from "../components/Cards";
+import Cards from "../common/Cards";
 import axios from "axios";
 
 function Freebook() {
@@ -20,7 +20,7 @@ function Freebook() {
       }
     };
     getBook();
-  }, []); 
+  }, []);
 
   var settings = {
     dots: true,
@@ -71,7 +71,7 @@ function Freebook() {
         <div>
           <Slider {...settings}>
             {book.map((item) => (
-                <Cards item={item} key={item.id}/>
+              <Cards item={item} key={item.id} />
             ))}
           </Slider>
         </div>

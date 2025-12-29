@@ -2,9 +2,17 @@ import React, { useEffect, useState } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
 import { useAuth } from "../pages/context/AuthProvider";
+import { useSearch } from "../pages/context/SearchContext";
+import useDebounce from "../hooks/useDebounce";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const { authUser } = useAuth();
+  const { setSearchQuery, setSearchResults, setIsSearching } = useSearch();
+  const [inputValue, setInputValue] = useState("");
+  const debouncedSearch = useDebounce(inputValue, 500);
+  const navigate = useNavigate();
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -37,6 +45,44 @@ function Navbar() {
       window.removeEventListener("scroll", handlescroll);
     };
   }, []);
+
+  useEffect(() => {
+    const searchBooks = async () => {
+      if (debouncedSearch.trim() === "") {
+        setSearchResults([]);
+        setSearchQuery("");
+        setIsSearching(false);
+        return;
+      }
+
+      setIsSearching(true);
+      setSearchQuery(debouncedSearch);
+
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/book/search?q=${debouncedSearch}`
+        );
+        setSearchResults(res.data);
+      } catch (error) {
+        console.log(error);
+        setSearchResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    };
+
+    searchBooks();
+  }, [debouncedSearch]);
+
+  const handleSearchChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    if (e.key === "Enter" && inputValue.trim()) {
+      navigate(`/search?q=${inputValue}`);
+    }
+  };
 
   const navItems = (
     <>
@@ -122,7 +168,10 @@ function Navbar() {
                     type="search"
                     required
                     placeholder="Search"
-                    className="grow outline-none"
+                    className="grow outline-none bg-transparent"
+                    value={inputValue}
+                    onChange={handleSearchChange}
+                    onKeyDown={handleSearchSubmit}
                   />
                 </label>
               </div>

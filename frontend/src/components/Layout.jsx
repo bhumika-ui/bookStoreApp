@@ -1,16 +1,14 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../common/Navbar";
+import Footer from "../common/Footer";
 
-function Layout({children}) {
-    return (
-        <>
-        <Navbar/>
-        <div className="min-h-screen">
-            {children}
-        </div>
-        <Footer/>
-        </>
-    );
+function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen">{children}</div>
+      <Footer />
+    </>
+  );
 }
 
 export default Layout;
