@@ -1,18 +1,21 @@
 import React from "react";
-import Home from "./home/Home";
+import Home from "./pages/home/Home"
 import { Navigate, Route, Routes } from "react-router-dom";
-import Courses from "./courses/Courses";
+import Courses from "./pages/courses/Courses";
 import Signup from "./components/Signup";
 import { ToastContainer } from "react-toastify";
-import { useAuth } from "./context/AuthProvider";
-import Contacts from "./contact/Contacts";
-import Abouts from "./about/Abouts";
+import { useAuth } from "./pages/context/AuthProvider";
+import Contacts from "./pages/contact/Contacts";
+import Abouts from "./pages/about/Abouts";
+import BookDetails from "./pages/bookDetail/bookDetails";
+import Layout from "./components/Layout";
 
 function App() {
   const { authUser } = useAuth();
   console.log(authUser);
   return (
     <>
+    <Layout>
       {/* {<Home/> */}
       {/* <Course/>} */}
       <Routes>
@@ -23,8 +26,10 @@ function App() {
         />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/about" element={<Abouts />} />
+        <Route path="/book/:id" element={<BookDetails/>} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      </Layout>
       <ToastContainer />
     </>
   );
