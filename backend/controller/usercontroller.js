@@ -1,5 +1,12 @@
-import User from "../model/usermodel.js";
+import User from "../model/userModel.js";
 import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const generateToken = (userId) => {
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+    expiresIn: "7d"
+  });
+};
 
 const signup = async (req, res) => {
   try {
@@ -16,6 +23,9 @@ const signup = async (req, res) => {
       password: hashPassword,
     });
     await createdUser.save();
+ 
+    const token = generateToken(createdUser._id);
+
     res.status(201).json({
       message: "User created successfully",
       user: {
@@ -23,6 +33,7 @@ const signup = async (req, res) => {
         fullname: createdUser.fullname,
         email: createdUser.email,
       },
+      token
     });
   } catch (error) {
     console.log("Error:" + error.message);
@@ -41,6 +52,9 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid username or password" });
     } else {
+
+      const token = generateToken(user._id);
+
       res.status(200).json({
         message: "Login successful",
         user: {
@@ -48,6 +62,7 @@ const login = async (req, res) => {
           fullname: user.fullname,
           email: user.email,
         },
+        token
       });
     }
   } catch (error) {

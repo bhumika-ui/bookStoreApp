@@ -3,8 +3,11 @@ import { data, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthProvider";
 
 function Login() {
+  const { login } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -22,10 +25,10 @@ function Login() {
         console.log(res.data);
         if (res.data) {
           toast.success("Login Successfully");
+          login(res.data.user, res.data.token);
           document.getElementById("my_modal_3").close();
           setTimeout(() => {
             window.location.reload();
-            localStorage.setItem("Users", JSON.stringify(res.data.user));
           }, 1000);
         }
       })

@@ -3,14 +3,11 @@ import { useAuth } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 
 function Logout() {
-  const [authUser, setAuthUser] = useAuth();
+  const { logout } = useAuth();
+
   const handleLogout = () => {
     try {
-      setAuthUser({
-        ...authUser,
-        user: null,
-      });
-      localStorage.removeItem("Users");
+      logout();
       toast.success("Logout Successfully");
       setTimeout(() => {
         window.location.reload();

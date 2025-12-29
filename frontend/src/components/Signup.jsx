@@ -3,11 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthProvider";
 
 function Signup() {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/"
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,7 @@ function Signup() {
         console.log(res.data);
         if (res.data) {
           toast.success("Signup Successful");
+          login(res.data.user, res.data.token);
           navigate(from, {replace: true});
         }
       })

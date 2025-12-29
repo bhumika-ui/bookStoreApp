@@ -9,7 +9,7 @@ import Contacts from "./contact/Contacts";
 import Abouts from "./about/Abouts";
 
 function App() {
-  const [authUser, setAuthUser] = useAuth();
+  const { authUser } = useAuth();
   console.log(authUser);
   return (
     <>
