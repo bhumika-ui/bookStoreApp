@@ -6,13 +6,16 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/AuthProvider.jsx";
 import SearchProvider from "./context/SearchContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
+import { WhishlistProvider } from "./context/WishlistContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
       <SearchProvider>
         <CartProvider>
-          <App />
+          <WhishlistProvider>
+            <App />
+          </WhishlistProvider>
         </CartProvider>
       </SearchProvider>
     </AuthProvider>

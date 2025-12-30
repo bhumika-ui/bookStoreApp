@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { useWishlist } from "../context/WishlistContext";
+import { useAuth } from "../context/AuthProvider";
+import { useCart } from "../context/CartContext";
+import { toast } from "react-toastify";
 
 function BookDetail() {
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const { authUser } = useAuth();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const getBook = async () => {
@@ -20,6 +27,30 @@ function BookDetail() {
     };
     getBook();
   }, [id]);
+
+  const handleWishlist = () => {
+    if (!authUser) {
+      toast.error("Please login to add to wishlist");
+      document.getElementById("my_modal_3").showModal();
+      return;
+    }
+    const added = toggleWishlist(book);
+    if (added) {
+      toast.success(`${book.name} added to wishlist`);
+    } else {
+      toast.success(`${book.name} removed from wishlist`);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!authUser) {
+      toast.error("Please login to add to cart");
+      document.getElementById("my_modal_3").showModal();
+      return;
+    }
+    addToCart(book);
+    toast.success(`${book.name} added to cart`);
+  };
 
   if (loading) {
     return (
@@ -61,10 +92,22 @@ function BookDetail() {
           </div>
 
           <div className="flex gap-4 pt-4">
-            <button className="btn bg-pink-500 hover:bg-pink-700 text-white">
+            <button 
+              onClick={handleAddToCart}
+              className="btn bg-pink-500 hover:bg-pink-700 text-white"
+            >
               {book.price === 0 ? "Get Free" : "Buy Now"}
             </button>
-            <button className="btn btn-outline">Add to Whishlist</button>
+            <button 
+              onClick={handleWishlist}
+              className={`btn ${
+                authUser && isInWishlist(book._id)
+                  ? "btn-secondary"
+                  : "btn-outline"
+              }`}
+            >
+              {authUser && isInWishlist(book._id) ? "Remove from Wishlist" : "Add to Wishlist"}
+            </button>
           </div>
 
           <div className="divider"></div>

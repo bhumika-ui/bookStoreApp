@@ -13,6 +13,22 @@ const userSchema = mongoose.Schema({
     password:{
         type: String,
         require: true
+    },
+    avatar:{
+        type: String,
+        default: ""
+    },
+    phone:{
+        type: String,
+        default: ""
+    },
+    address:{
+        type: String,
+        default: ""
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 

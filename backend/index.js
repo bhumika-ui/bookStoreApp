@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
 import bookRoute from "./route/bookroute.js";
-import userRoute from "./route/userroute.js";
+import userRoute from "./route/userRoute.js";
 import contactRoute from "./route/contactroute.js"
 import cors from "cors";
 
@@ -24,6 +24,7 @@ app.get("/",(req,res) => {
 app.use("/book", bookRoute);
 app.use("/users", userRoute);
 app.use("/contact", contactRoute);
+
 
 app.listen(PORT, () => {
     console.log(`Server is listening on ${PORT}`);
